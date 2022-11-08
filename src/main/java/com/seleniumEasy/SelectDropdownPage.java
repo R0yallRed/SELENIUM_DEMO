@@ -1,5 +1,6 @@
 package com.seleniumEasy;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,7 @@ public class SelectDropdownPage {
     private final By file = By.id("files");
 
 
+   @Step
     public SelectDropdownPage selectCountry(int index) {
         webDriver.findElement(selectCountryButton).click();
         WebElement countyChooser = webDriver.findElement(countriesList);
@@ -29,6 +31,7 @@ public class SelectDropdownPage {
         return this;
     }
 
+    @Step
     public SelectDropdownPage selectStateMulti(int index, int index2) {
         webDriver.findElement(selectStateMultiSearchField).click();
         WebElement stateChooser = webDriver.findElement(selectStateMultiDropDown);
@@ -39,6 +42,7 @@ public class SelectDropdownPage {
         return this;
     }
 
+    @Step
     public SelectDropdownPage selectWithDisabledValues() {
         WebElement territoryChooser = webDriver.findElement(outlyingTerritories);
         Select selectTerritory = new Select(territoryChooser);
@@ -46,6 +50,7 @@ public class SelectDropdownPage {
         return this;
     }
 
+    @Step
     public SelectDropdownPage selectWithCategoryOptions() {
         WebElement fileChooser = webDriver.findElement(file);
         Select chooseFile = new Select(fileChooser);

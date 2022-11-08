@@ -1,5 +1,6 @@
 package com.seleniumEasy;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -45,6 +46,7 @@ public class ListBoxPage extends BasicPage {
         return rightListElements.size();
     }
 
+    @Step
     public ListBoxPage selectAndMoveAllFromLeftBox() {
         List<WebElement> leftListElements = webDriver.findElements(listLeft);
         for (int i = 1; i <= leftListElements.size(); i++) {
@@ -56,6 +58,7 @@ public class ListBoxPage extends BasicPage {
         return this;
     }
 
+    @Step
     public ListBoxPage selectAndMoveAllFromRightBox() {
         List<WebElement> rightListElements = webDriver.findElements(listRight);
         String uncheckedItemClassName = "list-group-item";
@@ -73,6 +76,7 @@ public class ListBoxPage extends BasicPage {
         return this;
     }
 
+    @Step
     public ListBoxPage deselectAllFromLeftBox() {
         List<WebElement> leftListElements = webDriver.findElements(listLeft);
         String checkedItemClassName = "list-group-item active";
@@ -86,17 +90,20 @@ public class ListBoxPage extends BasicPage {
         return this;
     }
 
+    @Step
     public void clickArrowRight() {
         webDriver.findElement(arrowRight).click();
 
     }
 
+    @Step
     public void clickArrowLeft() {
         webDriver.findElement(arrowLeft).click();
 
     }
 
 
+    @Step
     public ListBoxPage moveUsingSearchLeftBox() {
         webDriver.findElement(searchFieldLeft).click();
         //first element

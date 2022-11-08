@@ -1,5 +1,6 @@
 package com.seleniumEasy;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,15 +16,18 @@ public class SubmitFormPage {
     private final By submitButton = By.id("btn-submit");
     private final By submitText = By.id("submit-control");
 
+    @Step
     public  SubmitFormPage enterName(String newName){
         webDriver.findElement(name).sendKeys(newName);
         return  this;
     }
 
+    @Step
     public  SubmitFormPage enterComment(String newComment){
         webDriver.findElement(comment).sendKeys(newComment);
         return  this;
     }
+    @Step
     public  SubmitFormPage clickSubmit( ){
         webDriver.findElement(submitButton).click();
         return  this;
