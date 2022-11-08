@@ -12,9 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MediumDifficultyTests extends BaseUITest {
 
 
-    public static final int INITIAL_LEFT_COUNT = 5;
-    public static final int INITIAL_RIGHT_COUNT = 5;
-
     @BeforeEach
     public void chooseIntermediateDifficulty() {
         mainPage.clickIntermediateButton();
@@ -73,25 +70,12 @@ public class MediumDifficultyTests extends BaseUITest {
     @DisplayName("Dual List Box positive Test")
     @Order(4)
     public void dualListBoxPositiveTest() {
-        mainPage.clickSelectDualListBox();
-        ListBoxPage listBoxPage = new ListBoxPage(webDriver);
-        int initialLeftBoxCount = listBoxPage.getListLeftCount();
-        int initialRightBoxCount = listBoxPage.getListRightCount();
-        listBoxPage.selectAllFromLeftBox();
-        listBoxPage.clickArrowRight();
-        listBoxPage.getListRightCount();
-        listBoxPage.selectAllFromRightBox();
-        listBoxPage.clickArrowLeft();
-        int mustBeEmptyRightList = listBoxPage.getListRightCount();
-        listBoxPage.deselectAllFromLeftBox();
-        listBoxPage.moveUsingSearchLeftBox();
-
-
-        assertAll(
-                () -> assertThat(initialLeftBoxCount, equalTo(INITIAL_LEFT_COUNT)),
-                () -> assertThat(initialRightBoxCount, equalTo(INITIAL_RIGHT_COUNT)),
-                () -> assertThat(mustBeEmptyRightList, equalTo(0))
-        );
+        ListBoxPage listBoxPage =
+                mainPage.clickSelectDualListBox()
+                        .selectAndMoveAllFromLeftBox()
+                        .selectAndMoveAllFromRightBox()
+                        .deselectAllFromLeftBox()
+                        .moveUsingSearchLeftBox();
 
     }
 }

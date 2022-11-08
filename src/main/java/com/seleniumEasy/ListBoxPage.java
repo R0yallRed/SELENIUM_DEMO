@@ -4,7 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.List;
 
 public class ListBoxPage extends BasicPage {
@@ -39,14 +45,18 @@ public class ListBoxPage extends BasicPage {
         return rightListElements.size();
     }
 
-    public void selectAllFromLeftBox() {
+    public ListBoxPage selectAndMoveAllFromLeftBox() {
         List<WebElement> leftListElements = webDriver.findElements(listLeft);
         for (int i = 1; i <= leftListElements.size(); i++) {
             webDriver.findElement(By.xpath(nthLeftElement + i + "]")).click();
         }
+        clickArrowRight();
+        List<WebElement> newLeftListElements = webDriver.findElements(listLeft);
+        assertTrue(newLeftListElements.isEmpty());
+        return this;
     }
 
-    public void selectAllFromRightBox() {
+    public ListBoxPage selectAndMoveAllFromRightBox() {
         List<WebElement> rightListElements = webDriver.findElements(listRight);
         String uncheckedItemClassName = "list-group-item";
 
@@ -56,9 +66,14 @@ public class ListBoxPage extends BasicPage {
                 webDriver.findElement(By.xpath(nthRightElement + i + "]")).click();
             }
         }
+        clickArrowLeft();
+        //assert
+        List<WebElement> newRightListElements = webDriver.findElements(listRight);
+        assertTrue(newRightListElements.isEmpty());
+        return this;
     }
 
-    public void deselectAllFromLeftBox() {
+    public ListBoxPage deselectAllFromLeftBox() {
         List<WebElement> leftListElements = webDriver.findElements(listLeft);
         String checkedItemClassName = "list-group-item active";
 
@@ -68,18 +83,21 @@ public class ListBoxPage extends BasicPage {
                 webDriver.findElement(By.xpath(nthLeftElement + i + "]")).click();
             }
         }
+        return this;
     }
 
     public void clickArrowRight() {
         webDriver.findElement(arrowRight).click();
+
     }
 
     public void clickArrowLeft() {
         webDriver.findElement(arrowLeft).click();
+
     }
 
 
-    public void moveUsingSearchLeftBox() {
+    public ListBoxPage moveUsingSearchLeftBox() {
         webDriver.findElement(searchFieldLeft).click();
         //first element
         String firstItem = webDriver.findElement(listLeftFirstItem).getText();
@@ -95,17 +113,22 @@ public class ListBoxPage extends BasicPage {
         webDriver.findElement(searchFieldLeft).clear();
         clickArrowRight();
         webDriver.findElement(searchFieldLeft).sendKeys(Keys.ENTER);
+
         List<WebElement> rightListElements = webDriver.findElements(listRight);
-
-        assertTrue(rightListElements.stream().anyMatch(x -> firstItem.equals(x.getText())));
-
+        List<WebElement> leftListElements = webDriver.findElements(listLeft);
 
 
+        assertAll(
+                () -> assertTrue(rightListElements.stream().anyMatch(x -> firstItem.equals(x.getText()))),
+                () -> assertTrue(rightListElements.stream().anyMatch(x -> lastItem.equals(x.getText()))),
+                () -> assertTrue(leftListElements.stream().noneMatch(x -> firstItem.equals(x.getText()))),
+                () -> assertTrue(leftListElements.stream().anyMatch(x -> lastItem.equals(x.getText())))
+        );
+        return this;
+    }
+}
 
-
-
-
-       /* import static org.assertj.core.api.Assertions;
+ /* import static org.assertj.core.api.Assertions;
 
         Assertions.assertThat(myClass.getMyItems())
                 .hasSize(2)
@@ -113,11 +136,6 @@ public class ListBoxPage extends BasicPage {
                 .containsExactlyInAnyOrder("foo", "bar");*/
 
 
-
-        //List<WebElement> visibleElements = webDriver.findElements(listLeft);
-        //assertThat();
-
-    }
-}
-
+//List<WebElement> visibleElements = webDriver.findElements(listLeft);
+//assertThat();
 

@@ -40,8 +40,8 @@ public class MainPage {
         return new SelectDropdownPage(webDriver);
     }
 
-    public void clickSelectDualListBox() {
+    public ListBoxPage clickSelectDualListBox() {
         webDriver.findElement(dualListBoxSelect).click();
-       // return new ListBoxPage(webDriver);
+        return  new ListBoxPage(webDriver);
     }
 }

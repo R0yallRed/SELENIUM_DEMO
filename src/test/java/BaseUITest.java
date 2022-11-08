@@ -25,7 +25,7 @@ public class BaseUITest {
         faker = Faker.instance();
     }
 
-/*    @AfterEach
+    @AfterEach
     public void goToMainPage(){
         webDriver.manage().deleteAllCookies();
         ((WebStorage) webDriver).getSessionStorage().clear();
@@ -36,5 +36,5 @@ public class BaseUITest {
     @AfterAll
     public static void quit() {
         webDriver.quit();
-    }*/
+    }
 }
