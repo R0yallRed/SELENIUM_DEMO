@@ -12,11 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.util.List;
 
 public class ListBoxPage extends BasePage{
-    //private final WebDriver webDriver;
-
-    /*public ListBoxPage(WebDriver driver) {
-        this.webDriver = driver;
-    }*/
 
     public ListBoxPage(WebDriver webDriver) {
         super(webDriver);

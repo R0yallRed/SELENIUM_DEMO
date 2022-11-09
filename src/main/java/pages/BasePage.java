@@ -17,8 +17,10 @@ public class BasePage {
         webDriver.get(url);
     }
 
-    public void waitElementIsVisible (WebElement webElement){
-        new WebDriverWait(webDriver,EXPLICIT_WAIT).until(ExpectedConditions.visibilityOf(webElement));
+    public WebElement waitElementIsVisible (WebElement webElement){
+       return new WebDriverWait(webDriver,EXPLICIT_WAIT).until(ExpectedConditions.visibilityOf(webElement));
     }
-
+    public WebElement waitElementIsClickable (WebElement webElement){
+        return new  WebDriverWait(webDriver,EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(webElement));
+    }
 }

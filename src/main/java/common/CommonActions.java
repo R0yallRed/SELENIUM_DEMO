@@ -34,7 +34,7 @@ public class CommonActions {
             default:
                 Assertions.fail("INCORRECT BROWSER NAME " + BROWSER_AND_PLATFORM);
         }
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
         return driver;
     }

@@ -7,11 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class SelectDropdownPage extends BasePage {
-    //private final WebDriver webDriver;
-
-   /* public SelectDropdownPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }*/
 
     public SelectDropdownPage(WebDriver webDriver) {
         super(webDriver);
@@ -25,12 +20,15 @@ public class SelectDropdownPage extends BasePage {
     private final By file = By.id("files");
 
 
-   @Step
+    @Step
     public SelectDropdownPage selectCountry(int index) {
+        waitElementIsVisible(webDriver.findElement(selectCountryButton));
+        //waitElementIsClickable(webDriver.findElement(selectCountryButton));
         webDriver.findElement(selectCountryButton).click();
         WebElement countyChooser = webDriver.findElement(countriesList);
        waitElementIsVisible(countyChooser);
-       Select selectCountry = new Select(countyChooser);
+       //waitElementIsClickable(countyChooser);
+        Select selectCountry = new Select(countyChooser);
         selectCountry.selectByIndex(index);
         webDriver.findElement(selectCountryButton).click();
         return this;

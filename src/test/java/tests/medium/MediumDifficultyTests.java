@@ -9,8 +9,7 @@ import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MediumDifficultyTests extends BaseTest {
@@ -44,7 +43,7 @@ public class MediumDifficultyTests extends BaseTest {
     @DisplayName("Submit form positive Test")
     @Order(2)
     public void submitFormPositiveTest() {
-        SubmitFormPage submitFormPage = mainPage.clickSubmitFormButton()
+         SubmitFormPage submitFormPage= mainPage.clickSubmitFormButton()
                 .enterName(faker.name().name())
                 .enterComment(randomAlphabetic(20))
                 .clickSubmit();
@@ -53,7 +52,7 @@ public class MediumDifficultyTests extends BaseTest {
 
                 () -> assertTrue(submitFormPage.resultIsDisplayed()),
                 () -> assertThat(submitFormPage.resultText(), equalTo("Ajax Request is Processing!")),
-                () -> Thread.sleep(1500),
+                () -> Thread.sleep(1500), //ExpectedConditions.textToBePresentInElement
                 () -> assertThat(submitFormPage.resultText(), equalTo("Form submited Successfully!"))
         );
 

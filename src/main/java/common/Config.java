@@ -1,7 +1,6 @@
 package common;
 
 public class Config {
-
     /*
     Specify browser and platform for test:
     *  CHROME_WINDOWS
@@ -15,7 +14,12 @@ public class Config {
     * */
     public static final  boolean CLEAR_COOKIES = true;
     /*
-     * Kep browser open after all tests
+     * Keep browser open after all tests
      * */
     public static final  boolean HOLD_BROWSER_OPEN = false;
+    /*
+     * Delete old screenshots before new run
+     * */
+    public static final  boolean CLEAR_REPORTS_DIR = true;
+
 }

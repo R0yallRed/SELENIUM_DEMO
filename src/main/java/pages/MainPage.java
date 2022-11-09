@@ -5,13 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class MainPage extends BasePage{
 
-
- // private final WebDriver webDriver;
-
- /*   public MainPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }*/
-
     public MainPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -42,6 +35,7 @@ public class MainPage extends BasePage{
     }
 
     public SelectDropdownPage clickSelectDropdown() {
+        waitElementIsVisible(webDriver.findElement(dropdownSelect));
         webDriver.findElement(dropdownSelect).click();
         return new SelectDropdownPage(webDriver);
     }

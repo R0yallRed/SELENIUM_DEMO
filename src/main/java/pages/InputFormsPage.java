@@ -7,12 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class InputFormsPage extends BasePage {
-      //private final WebDriver webDriver;
-
-    /*public InputFormsPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
-*/
 
     public InputFormsPage(WebDriver webDriver) {
         super(webDriver);
