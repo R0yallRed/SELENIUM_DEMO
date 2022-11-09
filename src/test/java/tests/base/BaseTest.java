@@ -4,13 +4,9 @@ import com.github.javafaker.Faker;
 import common.CommonActions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pages.BasePage;
-import pages.ListBoxPage;
-import pages.MainPage;
+import pages.mainPage.MainPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.html5.WebStorage;
 
@@ -21,7 +17,6 @@ import java.util.Objects;
 import static common.Config.*;
 import static constants.Constant.Urls.MAIN_PAGE_URL;
 
-//@Execution(ExecutionMode.CONCURRENT)
 @ExtendWith(Listener.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseTest {

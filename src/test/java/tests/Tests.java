@@ -1,7 +1,8 @@
-package tests.medium;
+package tests;
 
-import pages.ListBoxPage;
-import pages.SubmitFormPage;
+import pages.Easy.SimpleFormPage;
+import pages.medium.ListBoxPage;
+import pages.medium.SubmitFormPage;
 import org.junit.jupiter.api.*;
 import tests.base.BaseTest;
 
@@ -12,7 +13,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class MediumDifficultyTests extends BaseTest {
+public class Tests extends BaseTest {
 
 
     @BeforeEach
@@ -80,5 +81,21 @@ public class MediumDifficultyTests extends BaseTest {
                         .deselectAllFromLeftBox()
                         .moveUsingSearchLeftBox();
 
+    }
+
+    @Test
+    @DisplayName("Simple form test INTENTIONALLY BROKEN FOR SCREENSHOT")
+    @Order(5)
+    public void inputFormCalculation() {
+        mainPage.clickEasyButton();
+        mainPage.clickSimpleForm();
+        SimpleFormPage simpleFormPage = new SimpleFormPage(webDriver);
+        String message = faker.harryPotter().character();
+        simpleFormPage.enterMessage(message);
+        String returnedMessage = simpleFormPage.getReturnedText();
+        assertEquals(message,returnedMessage);
+        simpleFormPage.EnterNumbers(randomNumeric(1,3),randomNumeric(1,3));
+        String returnedSum = simpleFormPage.getReturnedSum();
+        assertEquals(returnedSum, randomNumeric(1,3));
     }
 }

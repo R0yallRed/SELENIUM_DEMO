@@ -1,17 +1,18 @@
-package pages;
+package pages.medium;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pages.basePage.BasePage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 import java.util.List;
 
-public class ListBoxPage extends BasePage{
+public class ListBoxPage extends BasePage {
 
     public ListBoxPage(WebDriver webDriver) {
         super(webDriver);

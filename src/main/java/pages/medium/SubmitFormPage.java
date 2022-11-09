@@ -1,8 +1,9 @@
-package pages;
+package pages.medium;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.basePage.BasePage;
 
 public class SubmitFormPage extends BasePage {
     public SubmitFormPage(WebDriver webDriver) {
