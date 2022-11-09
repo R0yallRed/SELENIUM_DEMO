@@ -1,12 +1,20 @@
-package com.seleniumEasy;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class MainPage {
+public class MainPage extends BasePage{
 
 
-    private final WebDriver webDriver;
+ // private final WebDriver webDriver;
+
+ /*   public MainPage(WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }*/
+
+    public MainPage(WebDriver webDriver) {
+        super(webDriver);
+    }
 
     private final By intermediateFormsButton =  By.xpath("//span[@class='round-tabs three']");
     private final By inputFormWithValidations = By.xpath("//div[@class = 'tab-pane fade active in']/*[4] /*[1] ");
@@ -16,9 +24,7 @@ public class MainPage {
 
 
 
-    public MainPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
+
 
     public void clickIntermediateButton(){
         webDriver.findElement(intermediateFormsButton).click();

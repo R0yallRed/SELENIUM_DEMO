@@ -1,14 +1,12 @@
-package com.seleniumEasy;
+package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SubmitFormPage {
-    private final WebDriver webDriver;
-
+public class SubmitFormPage extends BasePage {
     public SubmitFormPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 
     private final By name = By.id("title");

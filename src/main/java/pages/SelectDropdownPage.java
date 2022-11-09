@@ -1,4 +1,4 @@
-package com.seleniumEasy;
+package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -6,11 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class SelectDropdownPage {
-    private final WebDriver webDriver;
+public class SelectDropdownPage extends BasePage {
+    //private final WebDriver webDriver;
+
+   /* public SelectDropdownPage(WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }*/
 
     public SelectDropdownPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 
     private final By selectCountryButton = By.xpath("//span[@class='select2-selection select2-selection--single']");
@@ -25,7 +29,8 @@ public class SelectDropdownPage {
     public SelectDropdownPage selectCountry(int index) {
         webDriver.findElement(selectCountryButton).click();
         WebElement countyChooser = webDriver.findElement(countriesList);
-        Select selectCountry = new Select(countyChooser);
+       waitElementIsVisible(countyChooser);
+       Select selectCountry = new Select(countyChooser);
         selectCountry.selectByIndex(index);
         webDriver.findElement(selectCountryButton).click();
         return this;

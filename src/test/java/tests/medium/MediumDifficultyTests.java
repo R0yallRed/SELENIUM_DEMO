@@ -1,6 +1,10 @@
-import com.seleniumEasy.ListBoxPage;
-import com.seleniumEasy.SubmitFormPage;
+package tests.medium;
+
+import pages.ListBoxPage;
+import pages.SubmitFormPage;
 import org.junit.jupiter.api.*;
+import tests.base.BaseTest;
+
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -9,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class MediumDifficultyTests extends BaseUITest {
+public class MediumDifficultyTests extends BaseTest {
 
 
     @BeforeEach
@@ -79,32 +83,3 @@ public class MediumDifficultyTests extends BaseUITest {
 
     }
 }
-
-
-/*
-            List<WebElement> elementName = driver.findElements(By.LocatorStrategy("LocatorValue"));
-
-            // new WebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("")));
-
-    Вам нужно создать ArrayList с элементами типа WebElement - засадить туда функцию драйвера findelements, так как она возвращает ArrayList.
-        Потом вы просто манипулируете элементами списка, в цикле для каждого елемента ставите свои проверки, цикл естественно будет идти от 0 до размера списка найденных элементов.
-
-        ArrayList <WebElement> list = new ArrayList <WebElements>();
-        list = findElement(By.cssSelector("div.SAInfo div i.sex"));
-
-        for (int i=0;i<list.size();i++){
-// проверки для каждого элемента отдельно: list.get(i) - вернет і-тый элемент списка всех элементов
-
-----------------
-Мне когда то нужно было посчитать количество строк в таблице. Я сделал это так:
-int recordsCount = driver.FindElement(By.Id("id_tb")).FindElements(By.TagName("tr")).Count;
-----------------
-Сделал проще, без всякого цикла
-
-List<WebElement> list = wd.findElements(By.cssSelector("div.SAInfo div i.sex"));
-assertThat(12, equalTo(list.size()));
-----------------
-Если Вам нужно только количество элементов, почему не сделать так:
-
-int i = wd.findElements(By.cssSelector("div.SAInfo div i.sex")).Count;
-        }*/

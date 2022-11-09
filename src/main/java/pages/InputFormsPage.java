@@ -1,4 +1,4 @@
-package com.seleniumEasy;
+package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -6,11 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class InputFormsPage {
-      private final WebDriver webDriver;
+public class InputFormsPage extends BasePage {
+      //private final WebDriver webDriver;
+
+    /*public InputFormsPage(WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }
+*/
 
     public InputFormsPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 
     private final By firstName = By.xpath("//input[@name = 'first_name']");

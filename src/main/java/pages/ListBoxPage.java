@@ -1,4 +1,4 @@
-package com.seleniumEasy;
+package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -7,15 +7,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-public class ListBoxPage extends BasicPage {
+public class ListBoxPage extends BasePage{
+    //private final WebDriver webDriver;
 
+    /*public ListBoxPage(WebDriver driver) {
+        this.webDriver = driver;
+    }*/
 
     public ListBoxPage(WebDriver webDriver) {
         super(webDriver);
