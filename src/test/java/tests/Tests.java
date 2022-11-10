@@ -1,6 +1,7 @@
 package tests;
 
 import pages.Easy.SimpleFormPage;
+import pages.hard.SlidersPage;
 import pages.medium.ListBoxPage;
 import pages.medium.SubmitFormPage;
 import org.junit.jupiter.api.*;
@@ -97,5 +98,14 @@ public class Tests extends BaseTest {
         simpleFormPage.EnterNumbers(randomNumeric(1,3),randomNumeric(1,3));
         String returnedSum = simpleFormPage.getReturnedSum();
         assertEquals(returnedSum, randomNumeric(1,3));
+    }
+    @Test
+    @DisplayName("Drag and drop sliders")
+    @Order(6)
+    public void DragAndDropSliders() {
+        mainPage.clickHardButton();
+        mainPage.clickDragAndDropSliders()
+                .moveGreySlider()
+                .moveBlueSlider();
     }
 }
