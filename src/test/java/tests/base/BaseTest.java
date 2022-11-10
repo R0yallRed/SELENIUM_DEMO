@@ -31,7 +31,7 @@ public class BaseTest {
    /*
    * статический блок по очистке allure results и скриншотов
    * */
-    static {
+    private static void CleanOldStuff() {
        LOGGER.info("START TIME" + LocalTime.now());
        LOGGER.info("START clear reports dir:: build/reports/test");
        File allureResults = new File("target/allure-results");
@@ -51,6 +51,7 @@ public class BaseTest {
     @BeforeAll
     public static void setUp() {
         //webDriver.get(MAIN_PAGE_URL);
+        CleanOldStuff();
         faker = Faker.instance();
     }
 

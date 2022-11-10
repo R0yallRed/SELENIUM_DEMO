@@ -1,5 +1,7 @@
 package tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import pages.Easy.SimpleFormPage;
 import pages.hard.SlidersPage;
 import pages.medium.ListBoxPage;
@@ -24,6 +26,8 @@ public class Tests extends BaseTest {
 
     @Test
     @DisplayName("Input form positiveTest")
+    @Epic(value = "Intermediate forms")
+    @Feature(value = "Input form")
     @Order(1)
     public void inputFormWithValidationsPositiveTest() {
         mainPage.clickInputForm()
@@ -44,6 +48,8 @@ public class Tests extends BaseTest {
     @Test
     @DisplayName("Submit form positive Test")
     @Order(2)
+    @Epic(value = "Intermediate forms")
+    @Feature(value = "Submit form")
     public void submitFormPositiveTest() {
          SubmitFormPage submitFormPage= mainPage.clickSubmitFormButton()
                 .enterName(faker.name().name())
@@ -63,6 +69,8 @@ public class Tests extends BaseTest {
     @Test
     @DisplayName("Dropdown selection forms positive Test")
     @Order(3)
+    @Epic(value = "Intermediate forms")
+    @Feature(value = "Dropdown selection form")
     public void dropdownFormsPositiveTest() {
         mainPage.clickSelectDropdown()
                 .selectCountry((int) (Math.random() * 10))
@@ -87,6 +95,8 @@ public class Tests extends BaseTest {
     @Test
     @DisplayName("Simple form test INTENTIONALLY BROKEN FOR SCREENSHOT")
     @Order(5)
+    @Epic(value = "Basic forms")
+    @Feature(value = "Input calculation form")
     public void inputFormCalculation() {
         mainPage.clickEasyButton();
         mainPage.clickSimpleForm();
@@ -102,10 +112,13 @@ public class Tests extends BaseTest {
     @Test
     @DisplayName("Drag and drop sliders")
     @Order(6)
+    @Epic(value = "Advanced forms")
+    @Feature(value = "Input calculation form")
     public void DragAndDropSliders() {
         mainPage.clickHardButton();
         mainPage.clickDragAndDropSliders()
                 .moveGreySlider()
                 .moveBlueSlider();
     }
+
 }
