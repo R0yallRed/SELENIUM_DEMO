@@ -6,3 +6,9 @@
 + Selenium
 + Junit 5
 + Allure
+
+Запуск тестов:
+> maven clean test
+
+Запуск тестов:
+> maven clean test
