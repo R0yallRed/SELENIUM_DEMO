@@ -2,5 +2,7 @@
 ## Сайт: https://demo.seleniumeasy.com/
 ### Использованные технологии:
 + Java
++ Maven
 + Selenium
++ Junit 5
 + Allure
