@@ -10,5 +10,5 @@
 Запуск тестов:
 > maven clean test
 
-Запуск тестов:
-> maven clean test
+Allure отчет:
+> mvn allure:serve
