@@ -1,3 +1,6 @@
-﻿# SELENIUM_DEMO
-## SELENIUM_DEMO
-### SELENIUM_DEMO
+﻿# Демо-проект по UI автотестированию
+## Сайт: https://demo.seleniumeasy.com/
+### Использованные технологии:
++Java
++Selenium
++Allure
