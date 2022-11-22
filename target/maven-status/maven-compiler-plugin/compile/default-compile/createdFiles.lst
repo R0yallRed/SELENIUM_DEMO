@@ -1,0 +1,13 @@
+pages\medium\InputFormsPage.class
+constants\Constant$timeoutVariables.class
+pages\mainPage\MainPage.class
+common\Config.class
+pages\Easy\SimpleFormPage.class
+pages\medium\SubmitFormPage.class
+constants\Constant$Urls.class
+pages\hard\SlidersPage.class
+constants\Constant.class
+pages\medium\SelectDropdownPage.class
+pages\medium\ListBoxPage.class
+common\CommonActions.class
+pages\basePage\BasePage.class
