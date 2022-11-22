@@ -28,25 +28,25 @@ public class BaseTest {
     public static Faker faker;
 
 
-   /*
-   * статический блок по очистке allure results и скриншотов
-   * */
+    /*
+     * статический блок по очистке allure results и скриншотов
+     * */
     private static void CleanOldStuff() {
-       LOGGER.info("START TIME" + LocalTime.now());
-       LOGGER.info("START clear reports dir:: build/reports/test");
-       File allureResults = new File("target/allure-results");
-       if (allureResults.isDirectory()) {
-           for (File item : Objects.requireNonNull(allureResults.listFiles()))
-               item.delete();
-       }
-       if (CLEAR_REPORTS_DIR){
-           File allureScreenshots = new File("build/reports/tests");
-           if (allureScreenshots.isDirectory()) {
-               for (File item : Objects.requireNonNull(allureScreenshots.listFiles()))
-                   item.delete();
-           }
-       }
-   }
+        LOGGER.info("START TIME" + LocalTime.now());
+        LOGGER.info("START clear reports dir:: build/reports/test");
+        File allureResults = new File("target/allure-results");
+        if (allureResults.isDirectory()) {
+            for (File item : Objects.requireNonNull(allureResults.listFiles()))
+                item.delete();
+        }
+        if (CLEAR_REPORTS_DIR) {
+            File allureScreenshots = new File("build/reports/tests");
+            if (allureScreenshots.isDirectory()) {
+                for (File item : Objects.requireNonNull(allureScreenshots.listFiles()))
+                    item.delete();
+            }
+        }
+    }
 
     @BeforeAll
     public static void setUp() {
@@ -56,22 +56,23 @@ public class BaseTest {
     }
 
     @BeforeEach
-    public  void goToMainPage(){
+    public void goToMainPage() {
         webDriver.get(MAIN_PAGE_URL);
     }
 
     @AfterEach
-    public void clearCookies(){
-        if (CLEAR_COOKIES){
+    public void clearCookies() {
+        if (CLEAR_COOKIES) {
             webDriver.manage().deleteAllCookies();
             ((WebStorage) webDriver).getSessionStorage().clear();
             ((WebStorage) webDriver).getLocalStorage().clear();
         }
 
     }
+
     @AfterAll
     public static void quit() {
-        if (!HOLD_BROWSER_OPEN){
+        if (!HOLD_BROWSER_OPEN) {
             webDriver.quit();
         }
     }

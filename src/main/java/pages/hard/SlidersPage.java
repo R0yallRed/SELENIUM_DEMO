@@ -13,49 +13,31 @@ public class SlidersPage extends BasePage {
         super(webDriver);
     }
 
+    public By getGreySliderPath() {
+        return greySliderPath;
+    }
+
     private final By greySliderPath = By.xpath("//div[@class='range']/*[1]");
-    private final By greyValue = By.xpath("//div[@class='range']/*[2]");
-    public WebElement greySlider = webDriver.findElement(greySliderPath);
-
-    private final By blueSliderPath = By.xpath("//div[@class='range range-primary']/*[1]");
-    private final By blueValue = By.xpath("//div[@class='range range-primary']/*[2]");
-    public WebElement blueSlider = webDriver.findElement(blueSliderPath);
-
+    public static final By greyValue = By.xpath("//div[@class='range']/*[2]");
+    public  WebElement greySlider = webDriver.findElement(greySliderPath);
 
     public String getGreyValue() {
         return webDriver.findElement(greyValue).getText();
     }
-    public String getBlueValue() {
-        return webDriver.findElement(blueValue).getText();
-    }
 
-    public SlidersPage moveGreySlider() {
+    public void moveGreySlider() {
         Actions action = new Actions(webDriver);
         String initialValue = getGreyValue();
-        action.dragAndDropBy(greySlider, 30, 0).perform();
+        double randomMoveLeft = Math.random() * 50;
+        double randomMoveRight = Math.random() * -50;
+        action.dragAndDropBy(greySlider, (int) randomMoveLeft, 0).perform();
         String firstValue = getGreyValue();
         Assertions.assertNotEquals("Values must NOT be equal", initialValue, firstValue);
-        action.dragAndDropBy(greySlider, -50, 0).perform();
+        action.dragAndDropBy(greySlider, (int) randomMoveRight, 0).perform();
         String secondValue = getGreyValue();
         Assertions.assertNotEquals("Values must NOT be equal", firstValue, secondValue);
-        action.dragAndDropBy(greySlider, 70, 0).perform();
-        action.dragAndDropBy(greySlider, -150, 0).perform();
-        return  this;
-    }
-
-
-    public SlidersPage moveBlueSlider() {
-        Actions action = new Actions(webDriver);
-        String initialValue = getBlueValue();
-        action.dragAndDropBy(blueSlider, 30, 0).perform();
-        String firstValue = getGreyValue();
-        Assertions.assertNotEquals("Values must NOT be equal", initialValue, firstValue);
-        action.dragAndDropBy(blueSlider, -50, 0).perform();
-        String secondValue = getGreyValue();
-        Assertions.assertNotEquals("Values must NOT be equal", firstValue, secondValue);
-        action.dragAndDropBy(blueSlider, 70, 0).perform();
-        action.dragAndDropBy(blueSlider, -150, 0).perform();
-        return  this;
+        action.dragAndDropBy(greySlider, (int) randomMoveLeft, 0).perform();
+        action.dragAndDropBy(greySlider, (int) randomMoveRight, 0).perform();
     }
 
 }

@@ -23,4 +23,6 @@ public class BasePage {
     public WebElement waitElementIsClickable (WebElement webElement){
         return new  WebDriverWait(webDriver,EXPLICIT_WAIT).until(ExpectedConditions.elementToBeClickable(webElement));
     }
+
+
 }

@@ -62,7 +62,6 @@ public class MainPage extends BasePage {
 
     public void clickSimpleForm() {
         webDriver.findElement(simpleForm).click();
-        // return  new SimpleFormPage(webDriver);
     }
 
     public SlidersPage clickDragAndDropSliders() {

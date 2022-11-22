@@ -19,6 +19,7 @@ public class SimpleFormPage extends BasePage {
     private final By totalResult = By.xpath("//span[@id ='displayvalue']");
 
     public void enterMessage(String message) {
+
         webDriver.findElement(enterMessageField).sendKeys(message);
         webDriver.findElement(showMessageButton).click();
         System.out.println(webDriver.findElement(savedMessage).getText());

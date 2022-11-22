@@ -99,9 +99,8 @@ public class ListBoxPage extends BasePage {
 
     }
 
-
     @Step
-    public ListBoxPage moveUsingSearchLeftBox() {
+    public void moveUsingSearchLeftBox() {
         webDriver.findElement(searchFieldLeft).click();
         //first element
         String firstItem = webDriver.findElement(listLeftFirstItem).getText();
@@ -117,7 +116,6 @@ public class ListBoxPage extends BasePage {
         webDriver.findElement(searchFieldLeft).clear();
         clickArrowRight();
         webDriver.findElement(searchFieldLeft).sendKeys(Keys.ENTER);
-
         List<WebElement> rightListElements = webDriver.findElements(listRight);
         List<WebElement> leftListElements = webDriver.findElements(listLeft);
 
@@ -128,18 +126,5 @@ public class ListBoxPage extends BasePage {
                 () -> assertTrue(leftListElements.stream().noneMatch(x -> firstItem.equals(x.getText()))),
                 () -> assertTrue(leftListElements.stream().anyMatch(x -> lastItem.equals(x.getText())))
         );
-        return this;
     }
 }
-
- /* import static org.assertj.core.api.Assertions;
-
-        Assertions.assertThat(myClass.getMyItems())
-                .hasSize(2)
-                .extracting(MyItem::getName)
-                .containsExactlyInAnyOrder("foo", "bar");*/
-
-
-//List<WebElement> visibleElements = webDriver.findElements(listLeft);
-//assertThat();
-
