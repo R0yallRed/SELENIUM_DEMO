@@ -7,8 +7,9 @@ public class Config {
     *  MOZILLA_WINDOWS
     *  CHROME_MAC
     *  CHROME_MAC_ARM
+    * REMOTE
     * */
-    public static final  String BROWSER_AND_PLATFORM = "CHROME_WINDOWS";
+    public static final  String BROWSER_AND_PLATFORM = "REMOTE";
     /*
     * Clean cookies after each test
     * */

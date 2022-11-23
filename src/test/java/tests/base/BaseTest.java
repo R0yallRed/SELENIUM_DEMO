@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.html5.WebStorage;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.time.LocalTime;
 import java.util.Objects;
 
@@ -20,17 +21,21 @@ import static constants.Constant.Urls.MAIN_PAGE_URL;
 @ExtendWith(Listener.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseTest {
+    protected static WebDriver webDriver;
 
+    static {
+        try {
+            webDriver = CommonActions.createDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    protected static WebDriver webDriver = CommonActions.createDriver();
     protected MainPage mainPage = new MainPage(webDriver);
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseTest.class);
     public static Faker faker;
 
 
-    /*
-     * статический блок по очистке allure results и скриншотов
-     * */
     private static void CleanOldStuff() {
         LOGGER.info("START TIME" + LocalTime.now());
         LOGGER.info("START clear reports dir:: build/reports/test");
@@ -50,8 +55,9 @@ public class BaseTest {
 
     @BeforeAll
     public static void setUp() {
-        //webDriver.get(MAIN_PAGE_URL);
-        CleanOldStuff();
+        if (!BROWSER_AND_PLATFORM.equals("REMOTE")){
+            CleanOldStuff();
+        }
         faker = Faker.instance();
     }
 
@@ -62,7 +68,7 @@ public class BaseTest {
 
     @AfterEach
     public void clearCookies() {
-        if (CLEAR_COOKIES) {
+        if (CLEAR_COOKIES && !BROWSER_AND_PLATFORM.equals("REMOTE") ) {
             webDriver.manage().deleteAllCookies();
             ((WebStorage) webDriver).getSessionStorage().clear();
             ((WebStorage) webDriver).getLocalStorage().clear();
